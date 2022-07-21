@@ -1,13 +1,11 @@
-import { createStore, combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import stockReducer from "./Stock.store";
 
-import stockReducer from "./stock/reducer";
-
-const rootReducer = combineReducers({
-    stock: stockReducer
+const store = configureStore({
+    reducer: {
+        stock: stockReducer,
+    },
 })
 
-const store = createStore(rootReducer);
-
-export type RootState = ReturnType<typeof rootReducer>;
-
+export type RootState = ReturnType<typeof store.getState>;
 export default store

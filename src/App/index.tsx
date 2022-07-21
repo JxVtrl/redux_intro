@@ -1,16 +1,21 @@
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
+import { RootState } from '../store'
+import { increment, decrement } from '../store/Stock.store'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch()
+  const stock = useSelector((state: RootState) => state.stock)
 
   return (
     <div className="App">
       <h1>Redux + React + TS</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <>
+          {stock.count}
+          <button onClick={() => dispatch(increment())}>Increment</button>
+          <button onClick={() => dispatch(decrement())}>Decrement</button>
+        </>
       </div>
     </div>
   )
