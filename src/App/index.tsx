@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
 import { RootState } from '../store'
-import { increment, decrement } from '../store/Stock.store'
+import { asyncIncrement, asyncDecrement } from '../store/Stock.store'
 
 function App() {
   const dispatch = useDispatch()
@@ -13,8 +13,8 @@ function App() {
       <div className="card">
         <>
           {stock.count}
-          <button onClick={() => dispatch(increment())}>Increment</button>
-          <button onClick={() => dispatch(decrement())}>Decrement</button>
+          <button onClick={() => dispatch(asyncIncrement(5))}>Increment</button>
+          <button onClick={() => dispatch(asyncDecrement(-5))}>Decrement</button>
         </>
       </div>
     </div>
